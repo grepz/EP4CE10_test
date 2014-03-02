@@ -1,0 +1,20 @@
+set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name RESERVE_DATA1_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name RESERVE_FLASH_NCE_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name RESERVE_DCLK_AFTER_CONFIGURATION "USE AS REGULAR IO"
+
+set_location_assignment PIN_E16 -to clk
+set_location_assignment PIN_L10 -to dat[0]
+set_location_assignment PIN_M10 -to dat[1]
+set_location_assignment PIN_M11 -to dat[2]
+set_location_assignment PIN_N13 -to dat[3]
+set_location_assignment PIN_P14 -to dat[4]
+set_location_assignment PIN_N14 -to dat[5]
+set_location_assignment PIN_L13 -to dat[6]
+set_location_assignment PIN_M12 -to dat[7]
+set_location_assignment PIN_G16 -to rs
+set_location_assignment PIN_F16 -to rw
+set_location_assignment PIN_F15 -to en
+
+set_location_assignment PIN_L14 -to LCD_N
+set_location_assignment PIN_L12 -to LCD_P

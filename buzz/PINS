@@ -1,0 +1,3 @@
+set_location_assignment PIN_E16 -to clk
+set_location_assignment PIN_B16 -to reset
+set_location_assignment PIN_J1 -to out
