@@ -1,0 +1,6 @@
+set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
+
+set_location_assignment PIN_E16 -to clk
+set_location_assignment PIN_L6  -to rs232_rx
+set_location_assignment PIN_P8  -to rs232_tx
+set_location_assignment PIN_B16 -to rst_n

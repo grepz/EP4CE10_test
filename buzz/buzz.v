@@ -1,7 +1,7 @@
 module buzz(clk,
 	    reset,
 	    out
-            );
+            /*AUTOARG*/);
    input clk;
    input reset;
    output out;
