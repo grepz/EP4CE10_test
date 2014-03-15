@@ -1,0 +1,24 @@
+# -*- Makefile -*-
+
+PART      = EP4CE10F17C8
+FAMILY    = "Cyclone IV E"
+BOARDFILE = PINS
+
+QPATH = ~/altera/13.1/quartus/bin
+
+QC   = $(QPATH)/quartus_sh
+QP   = $(QPATH)/quartus_pgm
+QM   = $(QPATH)/quartus_map
+QF   = $(QPATH)/quartus_fit
+QA   = $(QPATH)/quartus_asm
+QS   = $(QPATH)/quartus_sta
+ECHO = echo
+Q   ?= @
+
+STAMP = echo done >
+
+QCFLAGS = --flow compile
+QFFLAGS = --part=$(PART) --read_settings_files=on
+QMFLAGS = --read_settings_files=on $(addprefix --source=,$(SRCS))
+
+ASIGN = $(PRODUCT).qsf $(PRODUCT).qpf

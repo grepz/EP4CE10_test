@@ -1,37 +1,18 @@
 PRODUCT   = test_joystick
-PART      = EP4CE10F17C8
-FAMILY    = "Cyclone IV E"
-BOARDFILE = PINS
 MOD       = joystick
 
-QPATH = ~/altera/13.1/quartus/bin
-
-QC   = $(QPATH)/quartus_sh
-QP   = $(QPATH)/quartus_pgm
-QM   = $(QPATH)/quartus_map
-QF   = $(QPATH)/quartus_fit
-QA   = $(QPATH)/quartus_asm
-QS   = $(QPATH)/quartus_sta
-ECHO = echo
-Q   ?= @
-
-STAMP = echo done >
-
-QCFLAGS = --flow compile
-QPFLAGS =
-QMFLAGS = --read_settings_files=on $(addprefix --source=,$(SRCS))
-QFFLAGS = --part=$(PART) --read_settings_files=on
-
 SRCS =  joystick.v
-ASIGN = $(PRODUCT).qsf $(PRODUCT).qpf
+
+include ../Make.defs
+
+.PHONY: all
+all: $(PRODUCT)
 
 map: smart.log $(PRODUCT).map.rpt
 fit: smart.log $(PRODUCT).fit.rpt
 asm: smart.log $(PRODUCT).asm.rpt
 sta: smart.log $(PRODUCT).sta.rpt
 smart: smart.log
-
-all: $(PRODUCT)
 
 $(ASIGN):
 	$(Q)$(ECHO) "Generating asignment files."
@@ -69,11 +50,13 @@ sta.chg:
 asm.chg:
 	$(STAMP) asm.chg
 
+.PHONY: clean
 clean:
 	$(Q)$(ECHO) "Cleaning."
 	rm -rf db incremental_db
 	rm -f smart.log *.rpt *.sof *.chg *.qsf *.qpf *.summary *.smsg *.pin *.jdi
 
+.PHONY: prog
 prog: $(PRODUCT).sof
 	$(Q)$(ECHO) "Programming."
 	$(QP) --no_banner --mode=jtag -o "P;$(PRODUCT).sof"
